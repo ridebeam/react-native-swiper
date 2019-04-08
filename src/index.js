@@ -579,7 +579,10 @@ export default class extends Component {
 
     return (
       <TouchableOpacity
-        onPress={() => button !== null && this.scrollBy(1)}
+        onPress={() => {
+          this.internals.isScrolling = false;
+          return button !== null && this.scrollBy(1)}
+        }
         disabled={this.props.disableNextButton}
       >
         <View>
@@ -597,7 +600,11 @@ export default class extends Component {
     }
 
     return (
-      <TouchableOpacity onPress={() => button !== null && this.scrollBy(-1)}>
+      <TouchableOpacity
+        onPress={() => {
+          this.internals.isScrolling = false;
+          return button !== null && this.scrollBy(-1)}
+        }>
         <View>
           {button}
         </View>
